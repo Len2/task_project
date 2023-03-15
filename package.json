@@ -11,7 +11,6 @@
     "seed": "node dist/common/db/seeds/seeder",
     "seed:user": "node dist/common/db/seeds/users/create-users.seed",
     "seed:refresh": "node dist/common/db/seeds/seeder --refresh",
-    "seed:roles": "node dist/common/db/seeds/roles/create-role.seed",
     "start": "nest start",
     "dev": "nest start --watch",
     "start:dev": "nest start --watch",
