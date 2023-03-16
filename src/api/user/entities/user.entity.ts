@@ -8,7 +8,7 @@ import { AuditEntity } from '../../../common/db/customBaseEntites/AuditEntity';
 export class User extends AuditEntity {
   @Column({
     type: 'enum',
-    default: UserRoles.USER,
+    default: UserRoles.ADMIN,
     enum: UserRoles,
   })
   role: UserRoles;

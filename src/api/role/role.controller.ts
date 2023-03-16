@@ -16,6 +16,7 @@ import { CreateRoleDto } from './dto/role.dto';
 import { UpdateRoleDto } from './dto/role.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { PaginationInterceptor } from '../../common/interceptors/pagination.interceptor';
+import { UserRoles } from '../user/enums/roles.enum';
 
 @UseGuards(new RolesGuard())
 @ApiBearerAuth()
@@ -24,13 +25,13 @@ import { PaginationInterceptor } from '../../common/interceptors/pagination.inte
 export class RoleController {
   constructor(private readonly roleService: RoleService) {}
 
-  @Roles('admin')
+  @Roles(UserRoles.ADMIN)
   @Post()
   async create(@Body() data: CreateRoleDto) {
     return await this.roleService.create(data);
   }
 
-  @Roles('admin')
+  @Roles(UserRoles.ADMIN)
   @UseInterceptors(PaginationInterceptor)
   @Get()
   async findAll() {
@@ -38,17 +39,17 @@ export class RoleController {
   }
 
   @Get(':id')
-  @Roles('admin', 'radiologist', 'dispatcher')
+  @Roles(UserRoles.ADMIN)
   async findOne(@Param('id') id: string) {
     return await this.roleService.findOne(id);
   }
-  @Roles('admin')
+  @Roles(UserRoles.ADMIN)
   @Put(':id')
   async update(@Param('id') id: string, @Body() data: UpdateRoleDto) {
     return await this.roleService.update(id, data);
   }
 
-  @Roles('admin')
+  @Roles(UserRoles.ADMIN)
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return await this.roleService.remove(id);
