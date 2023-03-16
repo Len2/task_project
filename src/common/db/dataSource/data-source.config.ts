@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { User } from '../../../api/user/entities/user.entity';
 import { PasswordReset } from '../../../api/user/entities/reset-password.entity';
 import { Role } from '../../../api/role/entities/role.entity';
+import { Project } from '../../../api/project/entity/project.entity';
 
 export const config = {
   name: 'default',
@@ -13,7 +14,7 @@ export const config = {
   database: process.env.TYPEORM_NAME,
   synchronize: true,
   dropSchema: false,
-  entities: [User, PasswordReset, Role],
+  entities: [User, PasswordReset, Role, Project],
   migrations: [process.env.TYPEORM_MIGRATIONS],
   logging: process.env.NODE_ENV === 'localhost',
   seeds: process.env.TYPEORM_SEEDING_SEEDS,
